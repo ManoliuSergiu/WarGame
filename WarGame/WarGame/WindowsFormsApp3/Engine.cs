@@ -59,8 +59,10 @@ namespace WindowsFormsApp3
 				if (selectedUnitHUD != null) selectedUnitHUD.SetStats();
 				SortHUDs();
 			}
-			else if (tick == 12 || tick == 42)
-				a = Task.Run(() => ListHUDsAsync());
+			else if (tick == 17 || tick == 47)
+				a = Task.Run(() => ListHUDsAsync(true));
+			else if (tick == 19 || tick == 49)
+				a = Task.Run(() => ListHUDsAsync(false));
 
 			FightTick();
 
@@ -81,17 +83,21 @@ namespace WindowsFormsApp3
 				Movement.TargetSelect(item.unit);
 			}
 		}
-		public static void ListHUDsAsync()
+		public static void ListHUDsAsync(bool team)
 		{
+			if (team)
 			for (int i = 0; i < blueHUDs.Count; i++)
 			{
+				if(blueHUDs[i]!=null)
 				blueHUDs[i].Invoke((MethodInvoker)delegate ()
 				{
 					blueHUDs[i].Location = new Point(15 + 90 * i, 110);
 				});
 			}
+			else
 			for (int i = 0; i <redHUDs.Count; i++)
 			{
+				if(redHUDs[i]!=null)
 				redHUDs[i].Invoke((MethodInvoker)delegate ()
 				{
 					redHUDs[i].Location = new Point(15 + 90 * i, 10);
@@ -150,10 +156,6 @@ namespace WindowsFormsApp3
 			SortHUDs();
 			ListHUDs();
 
-		}
-		public static void OrderDeathHUDs(UnitHUD HUD)
-		{
-			
 		}
 		public static int ListHUDs()
 		{

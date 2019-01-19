@@ -177,12 +177,12 @@ namespace WindowsFormsApp3
 				float dist = Dist(unit, unit.target);
 				if (!unit.Healing)
 				{
-					if (unit.stats.RANGE < dist || unit.controlledMovement && !unit.controlledTarget)
+					if (unit.stats.RANGE-5 < dist || unit.controlledMovement && !unit.controlledTarget)
 					{
 						Move(unit);
 						unit.shot = false;
 					}
-					else
+					else if(unit.stats.RANGE >= dist)
 					{
 						if (unit.currentTick == 0)
 						{
@@ -264,6 +264,7 @@ namespace WindowsFormsApp3
 			}
 			if (unit.target == null || unit.target.Type == UnitType.Dead)
 			{
+				MapRenderer.ShootingQueue.Remove(unit);
 				TargetSelect(unit);
 				return;
 			}
