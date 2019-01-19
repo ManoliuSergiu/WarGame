@@ -13,9 +13,7 @@ namespace WindowsFormsApp3
 
 	public partial class Form1 : Form
 	{
-		public static PictureBox pb;
 		public static PictureBox um;
-		public static Label lab;
 		public static UnitType selected=UnitType.Archer;
 		public static Button[] unitTypeButtons = new Button[(int)UnitType.Dead];
 		public static Form1 form;
@@ -34,13 +32,8 @@ namespace WindowsFormsApp3
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			pictureBox2.BackColor = Color.Transparent;
-			pictureBox2.Parent = pictureBox1;
-			pb = pictureBox1;
 			um = pictureBox2;
 			gr = panel1;
-			lab = label1;
-			Engine.Map = pictureBox1;
 			Engine.UnitMap = pictureBox2;
 			Engine.StartUp();
 		}
@@ -185,64 +178,6 @@ namespace WindowsFormsApp3
 			selected = (UnitType)aux.Tag;
 		}
 
-		private void button3_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.Lord;
-		}
-		private void button4_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.Hero;
-
-		}
-		private void button5_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.Archer;
-
-		}
-		private void button6_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.Swordsman;
-
-		}
-		private void button7_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.Spearman;
-
-		}
-
-		private void button8_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.SwordsmanS;
-
-		}
-		private void button9_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.SpearmanS;
-
-		}
-
-		private void button10_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.Cav;
-
-		}
-		private void button11_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.RCav;
-
-		}
-
-		private void button12_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.Giant;
-
-		}
-		private void button13_Click(object sender, EventArgs e)
-		{
-			selected = UnitType.Dragon;
-
-		}
-
 		private void trackBar1_Scroll(object sender, EventArgs e)
 		{
 			switch (trackBar1.Value)
@@ -313,9 +248,11 @@ namespace WindowsFormsApp3
 			for (int i = 0; i < 150; i++)
 			{
 				int a, b;
-				Unit unit = new Unit(a=rand.Next(pb.Size.Width /2-50, pb.Size.Width / 2 + 51), b=rand.Next(1,pb.Size.Height-2), UnitType.Archer/*(UnitType)rand.Next(11)*/);
+				Unit unit = new Unit(a=rand.Next(um.Size.Width /2-50, um.Size.Width / 2 + 51), b=rand.Next(1,um.Size.Height-2), (UnitType)rand.Next(11));
 				Engine.UnitPlacement(a, b, unit);
 			}
 		}
+
+		
 	}
 }

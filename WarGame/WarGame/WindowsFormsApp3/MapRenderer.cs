@@ -10,9 +10,8 @@ namespace WindowsFormsApp3
 {
 	public static class MapRenderer
 	{
-		private static PictureBox pb = Form1.pb;
 		private static PictureBox um = Form1.um;
-		public static Bitmap map = new Bitmap(pb.Width, pb.Height);
+		public static Bitmap map = new Bitmap(um.Width, um.Height);
 		public static Graphics gfx = Graphics.FromImage(map);
 		private static Random random = new Random();
 		public static Bitmap umap = new Bitmap(um.Width, um.Height);
@@ -86,7 +85,7 @@ namespace WindowsFormsApp3
 				{
 					gfx = Graphics.FromImage(map);
 					gfx.DrawString("x", new Font("Arial", unit.stats.SIZE * 2, FontStyle.Bold), auxb3, unit.GetPoint().X - unit.stats.SIZE * 2, unit.GetPoint().Y - unit.stats.SIZE * 2);
-					Engine.Map.Image = map;
+					Engine.UnitMap.BackgroundImage = map;
 					unit.corpse = true;
 				}
 			}
@@ -132,7 +131,7 @@ namespace WindowsFormsApp3
 		private static Bitmap DrawRandomMap()
 		{
 			Bitmap a = new Bitmap(DiamondSquareGen.width, DiamondSquareGen.height/2);
-			Bitmap b = new Bitmap(pb.Width,pb.Height);
+			Bitmap b = new Bitmap(um.Width,um.Height);
 			Graphics gpx = Graphics.FromImage(b);
 			gpx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 			heightmap = DiamondSquareGen.Start();

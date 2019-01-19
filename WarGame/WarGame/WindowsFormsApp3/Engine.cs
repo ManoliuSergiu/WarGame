@@ -12,7 +12,6 @@ namespace WindowsFormsApp3
 	public static class Engine
 	{
 
-		public static PictureBox Map=Form1.pb;
 		public static PictureBox UnitMap=Form1.um;
 		public static List<Unit> RedTeam = new List<Unit>();
 		public static List<Unit> BlueTeam = new List<Unit>();
@@ -35,19 +34,18 @@ namespace WindowsFormsApp3
 		{
 			tim.Tick += Tim_Tick;
 			tim.Interval = 17;
-			Map.Image = MapRenderer.DrawMap();
-			MapRenderer.ugfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 			for (int i = 0; i < redHUDs2.Length; i++)
 			{
 				redHUDs2[i] = new List<UnitHUD>();
 				blueHUDs2[i] = new List<UnitHUD>();
 			}
+			ReMap();
 		}
 
 		public static void ReMap()
 		{
 			
-			Map.Image = MapRenderer.DrawMap();
+			UnitMap.BackgroundImage = MapRenderer.DrawMap();
 			MapRenderer.ugfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 		}
 
@@ -199,7 +197,10 @@ namespace WindowsFormsApp3
 			{
 				foreach (var unithud in Category)
 				{
-					teamhuds.Add(unithud);
+					if (unithud.unit != null)
+					{
+						teamhuds.Add(unithud);
+					}
 					i++;
 				}
 			}
@@ -262,7 +263,7 @@ namespace WindowsFormsApp3
 				Text = (!team ? "Blue" : "Red") + " team won",
 				Font = new Font("Arial", 23f, FontStyle.Bold),
 				AutoSize = false,
-				Size = Form1.pb.Size,
+				Size = Form1.um.Size,
 				Location = new Point(0, 0),
 				Parent = Form1.um,
 				TextAlign = ContentAlignment.MiddleCenter,

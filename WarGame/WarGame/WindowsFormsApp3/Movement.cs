@@ -48,8 +48,6 @@ namespace WindowsFormsApp3
 					unit.controlledMovement = false;
 					TargetSelect(unit);
 				}
-				if(unit==Engine.selected)
-				Form1.lab.Text = unit.controlledMovement+"";
 			}
 			else
 			{
@@ -224,16 +222,12 @@ namespace WindowsFormsApp3
 			}
 			else if (a < unit.stats.CritRoll)
 			{
-				Form1.lab.Text = unit.target.HP+"";
 				unit.target.HP += unit.target.stats.MaxHP/3;
-				Form1.lab.Text = unit.target.HP + "";
 
 			}
 			else
 			{
-				Form1.lab.Text = unit.target.HP+"";
 				unit.target.HP += unit.target.stats.MaxHP / 2.5f;
-				Form1.lab.Text = unit.target.HP + "";
 			}
 			unit.gettingHealed = false;
 			unit.target.hud.RefreshStats();
@@ -370,11 +364,12 @@ namespace WindowsFormsApp3
 			unit.STM -= 0.007f*(unit.MS/(4/60f));
 			if (unit.currentTick==15||unit.currentTick==unit.stats.ATKSP/2+15)
 				unit.hud.RefreshStats();
-			if (x < 0 || y < 0|| x >= MapRenderer.map.Width - 1 || y >= MapRenderer.map.Height - 1)
+			if (x < 1 || y < 1|| x >= MapRenderer.map.Width - 2 || y >= MapRenderer.map.Height - 2)
 			{
-				DisposeUnit(unit);
 				if (unit.team)	Engine.BlueDeaths++;
 				else			Engine.RedDeaths++;
+				DisposeUnit(unit);
+				Engine.CheckWin();
 			}
 
 			else
@@ -389,28 +384,31 @@ namespace WindowsFormsApp3
 		private static void DisposeUnit(Unit unit)
 		{
 			List<Unit> team;
-			List<UnitHUD> HUDs;
+			List<UnitHUD>[] HUDs;
 
 			if(unit.team)
 			{
 				team = Engine.BlueTeam;
-				HUDs = Engine.blueHUDs;
+				HUDs = Engine.blueHUDs2;
 			}
 			else
 			{
 				team = Engine.RedTeam;
-				HUDs = Engine.redHUDs;
+				HUDs = Engine.redHUDs2;
 			}
 			bool UnitPred(Unit u)
 			{
 				return u.GetPoint() == unit.GetPoint();
 			}
+			bool UnitPred2(UnitHUD u)
+			{
+				return u.unit == unit;
+			}
 			int a = team.FindIndex(UnitPred);
 			team.RemoveAt(a);
-			var aux = HUDs[a];
-			team.RemoveAt(a);
-			aux.Dispose();
-			Engine.SortHUDs();
+			a = HUDs[(int)unit.Type].FindIndex(UnitPred2);
+			HUDs[(int)unit.Type].RemoveAt(a);
+			//Engine.SortHUDs();
 		}
 
 		private static Unit SelectBestArcherTarget(Unit unit)

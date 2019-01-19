@@ -137,9 +137,13 @@ namespace WindowsFormsApp3
 			else
 			{
 				if (team)
+				{
 					Engine.BlueTeam.Remove(this);
+				}
 				else
+				{
 					Engine.RedTeam.Remove(this);
+				}
 			}
 			return -1;
 
