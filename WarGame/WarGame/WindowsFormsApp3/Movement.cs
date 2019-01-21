@@ -175,7 +175,7 @@ namespace WindowsFormsApp3
 				float dist = Dist(unit, unit.target);
 				if (!unit.Healing)
 				{
-					if (unit.stats.RANGE-5 < dist || unit.controlledMovement && !unit.controlledTarget)
+					if (unit.stats.RANGE < dist || unit.controlledMovement && !unit.controlledTarget)
 					{
 						Move(unit);
 						unit.shot = false;
@@ -204,7 +204,7 @@ namespace WindowsFormsApp3
 			}
 			else
 			{
-				if(Engine.tick==10)
+				if(Engine.tick%10==5)
 					TargetSelect(unit);
 				unit.shot = false;
 				Move(unit);

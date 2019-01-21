@@ -50,7 +50,7 @@ namespace WindowsFormsApp3
 
 
 			Unit aux = Engine.selected;											
-			if (aux != null)
+			if (aux != null&&aux.Type!=UnitType.Dead)
 			{
 				PointF[] points = new PointF[3];
 				points[0] = new PointF(aux.GetPoint().X, aux.GetPoint().Y - aux.stats.SIZE * 1.1f);

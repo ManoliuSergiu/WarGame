@@ -17,23 +17,23 @@ namespace WindowsFormsApp3
 		{
 			InitializeComponent();
 			unit = unitHUD.unit;
-			GetDetails();
+			InitData();
 		}
 		public SelectedUnitHUD(Unit unit)
 		{
 			InitializeComponent();
 			this.unit = unit;
-			GetDetails();
+			InitData();
 		}
 
-		private void GetDetails()
+		private void InitData()
 		{
 			Location = new Point(1272-220, 757-220);
 			nameLbl.Text = unit.Name;
 			BackColor = unit.team ? Color.Blue : Color.Red;
 			listBox1.Items.Add("Kills:\t\t"+unit.killcount);
 			listBox1.Items.Add("Health:\t\t" + unit.HP + "/" + unit.stats.MaxHP);
-			listBox1.Items.Add("Stamina:\t\t"+unit.STM+"/"+unit.stats.STM);
+			listBox1.Items.Add("Stamina:\t\t" + Convert.ToInt32(unit.STM) + "/" +unit.stats.STM);
 			listBox1.Items.Add("Damage:\t\t"+unit.stats.DMG);
 			listBox1.Items.Add("Dexterity\t\t"+unit.stats.DEX);
 			listBox1.Items.Add("Armor:\t\t"+unit.stats.ARMOR);

@@ -144,7 +144,7 @@
 			// 
 			// flowLayoutPanel1
 			// 
-			this.flowLayoutPanel1.Location = new System.Drawing.Point(1030, 74);
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(1346, 74);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
 			this.flowLayoutPanel1.Size = new System.Drawing.Size(221, 361);
 			this.flowLayoutPanel1.TabIndex = 23;
@@ -154,7 +154,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
-			this.ClientSize = new System.Drawing.Size(1256, 718);
+			this.ClientSize = new System.Drawing.Size(1263, 718);
 			this.Controls.Add(this.flowLayoutPanel1);
 			this.Controls.Add(this.button17);
 			this.Controls.Add(this.button16);

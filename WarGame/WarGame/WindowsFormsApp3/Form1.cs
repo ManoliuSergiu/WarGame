@@ -86,6 +86,8 @@ namespace WindowsFormsApp3
 							Engine.selected.hud.BackColor = (Engine.selected.team) ? Color.Blue : Color.Red;
 						Engine.selected = aux;
 						Engine.selected.hud.BackColor = Color.Gold;
+						Engine.ChangeSelectedHud(new SelectedUnitHUD(aux));
+
 					}
 				}
 			}
@@ -138,6 +140,8 @@ namespace WindowsFormsApp3
 			if (k == 0)
 			{
 				CreateButtons();
+				//1030, 74
+				flowLayoutPanel1.Location = new Point(1030, 74);
 				MapRenderer.ugfx.DrawLine(new Pen(Color.Black, 5),new Point(um.Width/2,0),new Point(um.Width/2,um.Height));
 				um.Image = MapRenderer.umap;
 				button2.Text = "Start simulation";

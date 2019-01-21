@@ -74,7 +74,7 @@ namespace WindowsFormsApp3
 		[UnitAttr(true,true ,false,4,60,115,115,20,25,  5,55,175,4f,100,  35,19,2.5f,"SpearmanS")]		SpearmanS,			
 		[UnitAttr(false,false,true,180,65,75,180,40,15, 4,25,120,5f,125,20,18,2,"Archer")]				Archer,	
 		[UnitAttr(true,false,true,60,45,100,95,35,15,    5,35,110,5.2f,150,25,17,1.5f,"Medic")]			Medic,
-		[UnitAttr(true,false,false,6,70,150,85,200,35,  7,75,225,8.5f,200,   35,17,2,"Cavalry")]		Cav,				
+		[UnitAttr(true,false,false,6,70,150,85,35,35,  7,75,225,8.5f,200,   35,17,2,"Cavalry")]			Cav,				
 		[UnitAttr(true,false,true,95,55,75,150,25,35,   7,50,200,9.2f,200,  25,19,2,"R Cavalry")]		RCav,					
 		[UnitAttr(true,false,false,15,65,300,300,5,25,  12,75,600,6f,300, 55,20,3,"Giant")]				Giant,			
 		[UnitAttr(true,false,false,25,55,250,360,35,15, 10,55,500,8f,300,45,20,3,"Dragon")]				Dragon,
